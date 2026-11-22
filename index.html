@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f2e5">
+    <meta name="description" content="Help Pip the corgi bake, decorate, and sing for Camille's birthday in a little illustrated adventure.">
+    <title>A Very Corgi Birthday</title>
+    <link rel="icon" href="assets/pip.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,650;0,9..144,700;1,9..144,600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="game.js" defer></script>
+  </head>
+  <body>
+    <svg class="icons" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="icon-paw" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 11.5c-2.4 0-3.3 2.2-5.4 3.6-2.1 1.5-1.7 4.5.4 5.3 1.8.7 3.3-.7 5-.7s3.2 1.4 5 .7c2.1-.8 2.5-3.8.4-5.3-2.1-1.4-3-3.6-5.4-3.6Z"/><ellipse fill="currentColor" stroke="none" cx="4.5" cy="10" rx="2.15" ry="2.85" transform="rotate(-26 4.5 10)"/><ellipse fill="currentColor" stroke="none" cx="9.2" cy="6.3" rx="2.15" ry="3.05" transform="rotate(-9 9.2 6.3)"/><ellipse fill="currentColor" stroke="none" cx="14.8" cy="6.3" rx="2.15" ry="3.05" transform="rotate(9 14.8 6.3)"/><ellipse fill="currentColor" stroke="none" cx="19.5" cy="10" rx="2.15" ry="2.85" transform="rotate(26 19.5 10)"/></symbol>
+      <symbol id="icon-volume" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 9a4 4 0 0 1 0 6m2.5-8.5a7.8 7.8 0 0 1 0 11"/></symbol>
+      <symbol id="icon-mute" viewBox="0 0 24 24"><path d="M3 9h4l5-4v14l-5-4H3zM16 10l5 5m0-5-5 5"/></symbol>
+      <symbol id="icon-reset" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 1 2 5.6M3 5v7h7"/></symbol>
+      <symbol id="icon-sparkle" viewBox="0 0 24 24"><path d="m12 2 1.9 7.1L21 11l-7.1 1.9L12 20l-1.9-7.1L3 11l7.1-1.9L12 2Z" fill="currentColor" stroke="none"/><path d="m20 15 .9 2.1 2.1.9-2.1.9L20 21l-.9-2.1L17 18l2.1-.9L20 15Z" fill="currentColor" stroke="none"/></symbol>
+      <symbol id="icon-place" viewBox="0 0 24 24"><path d="m2 11 10-8 10 8M5 10v10h14V10M10 20v-6h4v6"/></symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.4c0 4.1-8.8 9.4-8.8 9.4S3.2 12.5 3.2 8.4a4.5 4.5 0 0 1 8.8-1 4.5 4.5 0 0 1 8.8 1Z"/></symbol>
+    </svg>
+
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="./" aria-label="A Very Corgi Birthday home">
+          <span class="brand-mark"><svg class="icon"><use href="#icon-paw"/></svg></span>
+          <span>Pip's Party</span>
+        </a>
+        <div class="topbar-tools">
+          <button class="tool-button" id="sound-toggle" type="button" aria-label="Sound on or off">
+            <svg class="icon volume-on"><use href="#icon-volume"/></svg>
+            <svg class="icon volume-off"><use href="#icon-mute"/></svg>
+            <span data-sound-label>Sound on</span>
+          </button>
+          <button class="tool-button reset-button" id="reset-button" type="button" aria-label="Restart the game" title="Restart the game">
+            <svg class="icon"><use href="#icon-reset"/></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="shell">
+      <div class="title-block">
+        <div class="title-lockup">
+          <svg class="icon title-sparkle" aria-hidden="true"><use href="#icon-sparkle"/></svg>
+          <h1>A Very <em>Corgi</em> Birthday</h1>
+          <svg class="icon title-sparkle" aria-hidden="true"><use href="#icon-sparkle"/></svg>
+        </div>
+        <p>Help Pip get the house party-ready before Camille comes home.</p>
+      </div>
+
+      <div class="game-layout">
+        <section class="stage-card" aria-label="Pip's world">
+          <div class="stage" id="game-stage" data-scene="kitchen" data-phase="intro">
+            <img id="scene-image" src="assets/kitchen.webp" alt="Warm sunlight falls across a cottage kitchen, where a mixing bowl and strawberries sit on the table." fetchpriority="high">
+            <div class="stage-shading"></div>
+            <div class="stage-location" aria-hidden="true">
+              <svg class="icon"><use href="#icon-place"/></svg>
+              <span data-location="kitchen">Pip's kitchen</span>
+              <span data-location="shop">The balloon shop</span>
+              <span data-location="living-room">The sitting room</span>
+              <span data-location="party">Camille's party</span>
+            </div>
+            <div class="stage-art" aria-hidden="true">
+              <div class="bunting">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="party-cake">
+                <i class="cake-candle"></i><i class="cake-candle"></i><i class="cake-candle"></i>
+              </div>
+              <div class="practice-balloon"></div>
+            </div>
+            <div id="scene-decor" aria-hidden="true"></div>
+            <div id="confetti" aria-hidden="true"></div>
+            <button class="mascot" id="mascot" type="button" aria-label="Give Pip a pat" title="Give Pip a pat">
+              <span class="mascot-heart">♥</span>
+              <img src="assets/pip.webp" alt="" draggable="false">
+            </button>
+          </div>
+          <div class="stage-caption">
+            <span class="stage-caption-pip"><svg class="icon" aria-hidden="true"><use href="#icon-paw"/></svg> Tap Pip for a little mischief</span>
+            <span class="stage-caption-heart"><svg class="icon" aria-hidden="true"><use href="#icon-heart"/></svg> For Camille</span>
+          </div>
+        </section>
+
+        <div class="game-sidebar">
+          <section class="task-card" aria-labelledby="scene-title">
+            <div class="task-kicker">
+              <svg class="icon" aria-hidden="true"><use href="#icon-sparkle"/></svg>
+              <span id="scene-kicker">The kitchen</span>
+            </div>
+            <h2 id="scene-title">A birthday surprise</h2>
+            <p id="scene-description">Camille is out for the afternoon. Pip has a whole party to plan and four little paws to do it.</p>
+            <p id="scene-progress" hidden></p>
+            <div id="game-actions" class="game-actions"></div>
+            <p class="game-status" id="game-status" role="status" aria-live="polite" aria-atomic="true"></p>
+            <noscript><p>Turn on JavaScript in your browser to help Pip with the party.</p></noscript>
+          </section>
+          <section class="checklist-card" aria-labelledby="checklist-title">
+            <div class="checklist-heading">
+              <h2 id="checklist-title">Party plans</h2>
+              <span id="progress-count">0 / 4</span>
+            </div>
+            <ol id="checklist"></ol>
+          </section>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
