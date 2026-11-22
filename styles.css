@@ -439,6 +439,14 @@ button:focus-visible, a:focus-visible { outline: 3px solid #7765ab; outline-offs
   #checklist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
 }
 
+@media (max-width: 345px) {
+  .title-block { padding-block: 10px; }
+  .tool-button { padding-inline: 0; }
+  .tool-button [data-sound-label], .stage-caption .stage-caption-heart, .task-kicker { display: none; }
+  .task-card { padding: 12px; }
+  #scene-title { margin-top: 0; }
+}
+
 @media (pointer: coarse) { .action-key { display: none; } }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
